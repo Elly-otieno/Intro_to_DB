@@ -15,9 +15,10 @@ CREATE DATABASE IF NOT EXISTS alx_book_store;
 CREATE TABLE Books(
     book_id INT PRIMARY KEY,
     title VARCHAR(50) NOT NULL,
-    author_id VARCHAR(50) NOT NULL FOREIGN KEY (author_id) REFERENCES Authors(author_id)
-    price FLOAT
-    publication_date DATE
+    author_id INT NOT NULL,
+    price FLOAT,
+    publication_date DATE,
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id)
 );
 
 -- Authors: Stores information about authors.
@@ -27,7 +28,7 @@ CREATE TABLE Books(
 
 CREATE TABLE Authors(
     author_id INT PRIMARY KEY,
-    author_name VARCHAR(215) NOT NULL,
+    author_name VARCHAR(215) NOT NULL
 );
 
 -- Customers: Stores information about customers.
@@ -40,7 +41,7 @@ CREATE TABLE Authors(
 CREATE TABLE Customers(
     customer_id INT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
-    email VARCHAR(215) 
+    email VARCHAR(215),
     address TEXT
 );
 
@@ -52,8 +53,9 @@ CREATE TABLE Customers(
 
 CREATE TABLE Orders(
     order_id INT PRIMARY KEY,
-    customer_id VARCHAR(215) NOT NULL FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    order_date DATE
+    customer_id INT NOT NULL,
+    order_date DATE,
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
 -- Order_Details: Stores information about the books included in each order.
@@ -65,9 +67,11 @@ CREATE TABLE Orders(
 
 CREATE TABLE Order_Details(
     orderdetailid INT PRIMARY KEY,
-    order_id VARCHAR(215) NOT NULL FOREIGN KEY (order_id) REFERENCES Orders(order_id),
-    book_id VARCHAR(215) NOT NULL FOREIGN KEY (book_id) REFERENCES Books(book_id),
-    quantity FLOAT
+    order_id INT NOT NULL,
+    book_id INT NOT NULL,
+    quantity FLOAT,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id)
 );
 
 -- NOTE : - The file extension should be alx_book_store.sql file - All SQL keywords should be in uppercase
