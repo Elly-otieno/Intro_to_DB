@@ -2,3 +2,5 @@
 
 -- The name of the file should be task_3.sql
 -- The database name will be passed as argument of mysql command
+
+SHOW TABLES;
