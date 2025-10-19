@@ -4,3 +4,15 @@
 -- You are not allowed to use the DESCRIBE or EXPLAIN statements
 -- The name of the file should be task_4.sql
 -- All SQL keywords should be in uppercase
+
+SELECT 
+    TABLE_NAME,
+    COLUMN_NAME,
+    COLUMN_TYPE,
+    IS_NULLABLE,
+    COLUMN_KEY,
+    EXTRA
+FROM 
+    INFORMATION_SCHEMA.COLUMNS
+WHERE 
+    TABLE_NAME = 'Books';
